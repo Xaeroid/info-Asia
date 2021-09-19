@@ -10,3 +10,12 @@ Node.js must be installed.
 
 to run the web app the command used is - npm start
 
+Languages used -
+1. HTML
+2. CSS
+3. Javascript
+
+Library used - React.js
+
+
+
