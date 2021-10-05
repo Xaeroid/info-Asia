@@ -5,34 +5,17 @@ const Home = () => {
     const[submit,setSubmit] = useState(false);
     const[name,setName] = useState(null);
     const[capital,setCapital] = useState(null);
-    const[flag,setFlag] = useState(null);
     const[region,setRegion] = useState(null);
-    const[subregion,setSubregion] = useState(null);
-    const[population,setPopulation] = useState(null);
-    const[border,setBorder] = useState([]);
-    const[language,setLanguage] = useState([]);
+    
+    
 
     useEffect(()=> {
             const response = async() =>{
-            const resreg = await axios.get('https://restcountries.eu/rest/v2/region/asia');    
+            const resreg = await axios.get(`http://api.countrylayer.com/v2/name/${search}?access_key=3e10d0f4d544d6e6a2333f6a0ed22ae6&FullText=true`);    
             console.log(resreg);
-            resreg.data.forEach(elem =>{
-                if(elem.name === search){
-                    console.log('success');
-                    console.log(elem.borders);
-                    setPopulation(elem.population);
-                    setName(elem.name);
-                    setCapital(elem.capital);
-                    setRegion(elem.region);
-                    setSubregion(elem.subregion);
-                    setFlag(elem.flag);
-                    setBorder(elem.borders);
-                    setLanguage(elem.languages);
-                }
-                else{
-                    setSubmit(false);
-                }
-            });
+            setName(resreg.data[0].name);
+                    setRegion(resreg.data[0].region);
+                    setCapital(resreg.data[0].capital);
         }
         response();
     },[search])
@@ -41,12 +24,7 @@ const Home = () => {
         setSearch(null);
         setSubmit(false);
         setName(null);
-        setPopulation(null);
         setRegion(null);
-        setSubregion(null);
-        setFlag(null);
-        setLanguage(null);
-        setBorder(null);
         setCapital(null);
     }
     return(
@@ -73,35 +51,12 @@ const Home = () => {
                         <h1 className="vname">Name of the Country - {name}</h1>
                         <h1 className="vcapital"> Its Capital - {capital}</h1>
                         <h1 className="vregion"> region - {region}</h1>
-                        <h1 className="vsubregion"> subregion - {subregion}</h1>
-                        <h1 className="vpopulation">{name}'s population is - {population}</h1>
-                        <div classname="vflag">
-                            <h2>{name}'s Flag is given below</h2>
-                            <img src ={flag} height = "150px" width = "150px" alt = "flag image"></img>
-                        </div>
-                        
-                        <div className="borderdiv">
-                            <h1>its borders are - </h1>
-                        {
-                                border.map(elem=>{
-                                    return <ol className="borders">{elem}</ol>
-                                })
-                            }   
-                        </div>
-                        <div className="languagediv">
-                            <h1>Languages spoken are :</h1>
-                            {
-                                language.map(elem=>{
-                                    return <ul className="languages"> {elem.name} , native name - {elem.nativeName}</ul>
-                                })
-                            }
-                        </div>
                     </>
-                    
                 )
             }
             </div>
         </>        
     )
+        
 }
 export default Home;

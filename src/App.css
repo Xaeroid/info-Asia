@@ -91,29 +91,16 @@ body{
 .vcapital{
   background-color: rgb(135, 171, 236);
 }
-.vpopulation{
-  background-color: rgb(135, 171, 236);
+.altspell{
+  background-color: rgb(135, 171, 236); 
 }
 .vregion{
   background-color: rgb(135, 171, 236);
 }
-.vsubregion{
-  background-color: rgb(135, 171, 236);
-}
-.vflag{
-  background-color: rgb(135, 171, 236);
-}
-.borderdiv{
-  background-color: rgb(135, 171, 236);
-}
-.languagediv{
-  background-color: rgb(135, 171, 236);
-}
-h3{
-  text-align: center;
-  margin-top: 40px;
-}
 .search:hover{
   transition: 2s;
   background-color: rgb(248, 118, 118);
+}
+h3{
+  text-align: center;
 }
