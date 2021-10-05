@@ -1,5 +1,5 @@
-# info-Asia
-A web app that provides information related to the countries in Asia.
+# info-world
+A web app that provides information related to the countries in the world.
 
 This web app is made with the help of React.js using the RESTapi to fetch the data.
 - to fetch the data axios has been used 
